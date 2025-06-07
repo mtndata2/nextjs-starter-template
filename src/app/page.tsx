@@ -14,7 +14,7 @@ export default function HomePage() {
   useEffect(() => {
     fetch('https://apli-apl-6795.mtndatasales.workers.dev/api/latest-rates')
       .then(res => res.json())
-      .then(data => {
+      .then((data: Record<string, Rate>) => {
         setRates(data)
         setLoading(false)
       })
@@ -55,4 +55,3 @@ export default function HomePage() {
     </main>
   )
 }
- 
