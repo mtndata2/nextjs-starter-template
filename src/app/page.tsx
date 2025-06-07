@@ -11,13 +11,13 @@ export default function HomePage() {
   const [rates, setRates] = useState<Record<string, Rate> | null>(null)
   const [loading, setLoading] = useState(true)
 
-  fetch('https://apli-apl-6795.mtndatasales.workers.dev/api/latest-rates')
-  .then(res => res.json() as Promise<Record<string, Rate>>)
-  .then(data => {
-    setRates(data)
-    setLoading(false)
-  })
-
+  useEffect(() => {
+    fetch('https://apli-apl-6795.mtndatasales.workers.dev/api/latest-rates')
+      .then(res => res.json() as Promise<Record<string, Rate>>)
+      .then(data => {
+        setRates(data)
+        setLoading(false)
+      })
       .catch(err => {
         console.error('Error fetching rates:', err)
         setLoading(false)
